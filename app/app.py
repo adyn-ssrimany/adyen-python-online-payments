@@ -28,17 +28,16 @@ def create_app():
 
     @app.route('/checkout/<integration>')
     def checkout(integration):
-
         if integration in get_supported_integration():
-            return render_template('component.html', method=integration, client_key=get_adyen_client_key())
+            return render_template('component.html', method=integration, client_key=get_adyen_client_key(), country=request.args.get('country'), currency=request.args.get('currency'))
         else:
             abort(404)
 
     @app.route('/api/sessions', methods=['POST'])
     def sessions():
-        host_url = request.host_url 
-
-        return adyen_sessions(host_url)
+        host_url = request.host_url
+        data = request.get_json()
+        return adyen_sessions(host_url,data)
 
     @app.route('/api/remove', methods=['POST'])
     def disable():
@@ -68,7 +67,7 @@ def create_app():
     @app.route('/redirect', methods=['POST', 'GET'])
     def redirect():
 
-        return render_template('component.html', method=None, client_key=get_adyen_client_key())
+        return render_template('component.html', method=None, client_key=get_adyen_client_key(),currency=None,country=None)
 
     # Process incoming webhook notifications
     @app.route('/api/webhooks/notifications', methods=['POST'])

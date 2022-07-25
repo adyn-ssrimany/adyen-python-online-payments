@@ -1,6 +1,10 @@
 const clientKey = JSON.parse(document.getElementById('client-key').innerHTML);
 const type = JSON.parse(document.getElementById('integration-type').innerHTML);
 
+const country = JSON.parse(document.getElementById('country').innerHTML);
+const currency = JSON.parse(document.getElementById('currency').innerHTML);
+
+
 // Used to finalize a checkout call in case of redirect
 const urlParams = new URLSearchParams(window.location.search);
 const sessionId = urlParams.get('sessionId'); // Unique identifier for the payment session
@@ -11,7 +15,8 @@ const redirectResult = urlParams.get('redirectResult');
 async function startCheckout() {
 	try {
 	    // Init Sessions
-		const checkoutSessionResponse = await callServer("/api/sessions?type=" + type);
+        const data = {"country":country,"currency":currency}
+		const checkoutSessionResponse = await callServer("/api/sessions?type=" + type,data);
 
         // Create AdyenCheckout using Sessions response
 		const checkout = await createAdyenCheckout(checkoutSessionResponse);
@@ -76,16 +81,16 @@ async function createAdyenCheckout(session) {
                 name: "Credit or debit card",
                 amount: {
                     value: 1000,
-                    currency: "EUR"
+                    currency: currency
                 }
             },
             paypal: {
                 amount: {
-                    currency: "USD",
+                    currency: currency,
                     value: 1000
                 },
                 environment: "test",
-                countryCode: "US"   // Only needed for test. This will be automatically retrieved when you are in production.
+                countryCode: country   // Only needed for test. This will be automatically retrieved when you are in production.
             }
         },
         onPaymentCompleted: (result, component) => {

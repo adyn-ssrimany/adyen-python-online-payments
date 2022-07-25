@@ -30,6 +30,8 @@
 
 	<script id="client-key" type="application/json">{{ client_key|tojson }}</script>
 	<script id="integration-type" type="application/json">{{ method|tojson }}</script>
+	<script id="country" type="application/json">{{ country|tojson }}</script>
+	<script id="currency" type="application/json">{{ currency|tojson }}</script>
 
 	<script src="{{ url_for('static', filename='js/adyen-implementation.js') }}"></script>
 {% endblock %}
