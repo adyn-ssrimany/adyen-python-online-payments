@@ -5,6 +5,9 @@ from flask import Flask, render_template, send_from_directory, request, abort
 
 from main.sessions import adyen_sessions
 from main.disable import adyen_disableStoredPayment
+from main.payment_methods import adyen_payment_methods
+from main.payments import adyen_payments
+from main.payments_details import adyen_payments_details
 from main.config import *
 
 
@@ -24,12 +27,12 @@ def create_app():
 
     @app.route('/cart/<integration>')
     def cart(integration):
-        return render_template('cart.html', method=integration)
+        return render_template('cart.html', method=integration, integrationType=request.args.get('intType'))
 
-    @app.route('/checkout/<integration>')
-    def checkout(integration):
+    @app.route('/checkout/<integrationType>/<integration>')
+    def checkout(integrationType,integration):
         if integration in get_supported_integration():
-            return render_template('component.html', method=integration, client_key=get_adyen_client_key(), country=request.args.get('country'), currency=request.args.get('currency'))
+            return render_template('component.html', method=integration, client_key=get_adyen_client_key(), country=request.args.get('country'), currency=request.args.get('currency'), integrationType=integrationType)
         else:
             abort(404)
 
@@ -46,6 +49,28 @@ def create_app():
         print("This is the data:"+data) 
 
         return adyen_disableStoredPayment(data)
+    
+    @app.route('/api/payment-methods', methods=['POST'])
+    def payment_methods():
+        host_url = request.host_url 
+        data = request.get_json()
+
+        return adyen_payment_methods(host_url,data)
+
+    @app.route('/api/payments', methods=['POST'])
+    def payments():
+        data = request.get_json()
+        host_url = request.host_url 
+
+        return adyen_payments(host_url,data)
+
+    @app.route('/api/payments-details', methods=['POST'])
+    def payments_details():
+        json_object = request.get_json()
+        host_url = request.host_url
+        data =  request.get_json()
+
+        return adyen_payments_details(host_url,data)
 
     @app.route('/result/success', methods=['GET'])
     def checkout_success():

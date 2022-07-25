@@ -13,91 +13,94 @@
             <p>To learn more about client-side integration solutions, check out <a
                     href="https://docs.adyen.com/checkout">Online payments.</a></p>
         </div>
-        <ul class="integration-list">
-            <li class="integration-list-item">
-                <a class="integration-list-item-link" href="{{ url_for('cart', integration="dropin") }}">
-                    <div class="title-container">
+        
+        <h4><label for="intType">Integration Type:</label></h4>
+        <span>    
+            <select name="intType" id="intType" class="integration-list-item" form='selectionForm'>
+                <option value="sessions" selected="selected">Sessions 5+</option>
+                <option value="nonsession">Pre Sessions &lt;5 </option>
+            </select>
+        </span>
+        
+            
+        
+
+        <form id="selectionForm">
+            <ul class="integration-list">
+
+                <li class="integration-list-item">
+                    <button type="submit" class="integration-list-item-link" formaction="{{ url_for('cart', integration="dropin") }}"><div class="title-container">
                         <p class="integration-list-item-title">Drop-in</p>
-                    </div>
-                </a>
-            </li>
-            <li class="integration-list-item">
-                <a class="integration-list-item-link" href="{{ url_for('cart', integration="card") }}">
-                    <div class="title-container">
+                    </div></button>
+                </li>
+
+                <li class="integration-list-item">
+                    <button type="submit" class="integration-list-item-link" formaction="{{ url_for('cart', integration="card") }}"><div class="title-container">
                         <p class="integration-list-item-title">Card</p>
-                    </div>
-                </a>
-            </li>
-            <li class="integration-list-item">
-                <a class="integration-list-item-link" href="{{ url_for('cart', integration="ideal") }}">
-                    <div class="title-container">
+                    </div></button>
+                </li>
+
+                <li class="integration-list-item">
+                    <button type="submit" class="integration-list-item-link" formaction="{{ url_for('cart', integration="ideal") }}"><div class="title-container">
                         <p class="integration-list-item-title">iDEAL</p>
-                    </div>
-                </a>
-            </li>
-            <li class="integration-list-item">
-                <a class="integration-list-item-link" href="{{ url_for('cart', integration="klarna") }}">
-                    <div class="title-container">
+                    </div></button>
+                </li>
+
+                <li class="integration-list-item">
+                    <button type="submit" class="integration-list-item-link" formaction="{{ url_for('cart', integration="klarna") }}"><div class="title-container">
                         <p class="integration-list-item-title">Klarna</p>
-                    </div>
-                </a>
-            </li>
-            <li class="integration-list-item">
-                <a class="integration-list-item-link" href="{{ url_for('cart', integration="directEbanking") }}">
-                    <div class="title-container">
+                    </div></button>
+                </li>
+
+                <li class="integration-list-item">
+                    <button type="submit" class="integration-list-item-link" formaction="{{ url_for('cart', integration="directEbanking") }}"><div class="title-container">
                         <p class="integration-list-item-title">Sofort</p>
-                    </div>
-                </a>
-            </li>
-            <li class="integration-list-item">
-                <a class="integration-list-item-link" href="{{ url_for('cart', integration="alipay") }}">
-                    <div class="title-container">
+                    </div></button>
+                </li>
+
+                <li class="integration-list-item">
+                    <button type="submit" class="integration-list-item-link" formaction="{{ url_for('cart', integration="alipay") }}"><div class="title-container">
                         <p class="integration-list-item-title">Alipay</p>
-                    </div>
-                </a>
-            </li>
-            <li class="integration-list-item">
-                <a class="integration-list-item-link" href="{{ url_for('cart', integration="boletobancario") }}">
-                    <div class="title-container">
+                    </div></button>
+                </li>
+
+                <li class="integration-list-item">
+                    <button type="submit" class="integration-list-item-link" formaction="{{ url_for('cart', integration="boletobancario") }}"><div class="title-container">
                         <p class="integration-list-item-title">Boleto</p>
-                    </div>
-                </a>
-            </li>
-            <li class="integration-list-item">
-                <a class="integration-list-item-link" href="{{ url_for('cart', integration="sepadirectdebit") }}">
-                    <div class="title-container">
+                    </div></button>
+                </li>
+
+                <li class="integration-list-item">
+                    <button type="submit" class="integration-list-item-link" formaction="{{ url_for('cart', integration="sepadirectdebit") }}"><div class="title-container">
                         <p class="integration-list-item-title">Sepa Direct Debit</p>
-                    </div>
-                </a>
-            </li>
-            <li class="integration-list-item">
-                <a class="integration-list-item-link" href="{{ url_for('cart', integration="dotpay") }}">
-                    <div class="title-container">
+                    </div></button>
+                </li>
+
+                <li class="integration-list-item">
+                    <button type="submit" class="integration-list-item-link" formaction="{{ url_for('cart', integration="dotpay") }}"><div class="title-container">
                         <p class="integration-list-item-title">Dotpay</p>
-                    </div>
-                </a>
-            </li>
-            <li class="integration-list-item">
-                <a class="integration-list-item-link" href="{{ url_for('cart', integration="giropay") }}">
-                    <div class="title-container">
+                    </div></button>
+                </li>
+            
+                <li class="integration-list-item">
+                    <button type="submit" class="integration-list-item-link" formaction="{{ url_for('cart', integration="giropay") }}"><div class="title-container">
                         <p class="integration-list-item-title">Giropay</p>
-                    </div>
-                </a>
-            </li>
-            <li class="integration-list-item">
-                <a class="integration-list-item-link" href="{{ url_for('cart', integration="ach") }}">
-                    <div class="title-container">
+                    </div></button>
+                </li>
+
+                <li class="integration-list-item">
+                    <button type="submit" class="integration-list-item-link" formaction="{{ url_for('cart', integration="ach") }}"><div class="title-container">
                         <p class="integration-list-item-title">ACH</p>
-                    </div>
-                </a>
-            </li>
-            <li class="integration-list-item">
-                <a class="integration-list-item-link" href="{{ url_for('cart', integration="paypal") }}">
-                    <div class="title-container">
+                    </div></button>
+                </li>
+                
+                <li class="integration-list-item">
+                    <button type="submit" class="integration-list-item-link" formaction="{{ url_for('cart', integration="paypal") }}"><div class="title-container">
                         <p class="integration-list-item-title">PayPal</p>
-                    </div>
-                </a>
-            </li>
-        </ul>
+                    </div></button>
+                </li>
+                
+            </ul>
+        </form>
     </div>
 {% endblock %}

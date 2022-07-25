@@ -33,5 +33,10 @@
 	<script id="country" type="application/json">{{ country|tojson }}</script>
 	<script id="currency" type="application/json">{{ currency|tojson }}</script>
 
-	<script src="{{ url_for('static', filename='js/adyen-implementation.js') }}"></script>
+	{% if integrationType == "sessions" %}
+		<script src="{{ url_for('static', filename='js/adyen-implementation.js') }}"></script>
+	{% else %}
+		<script src="{{ url_for('static', filename='js/adyen-implementation-presessions.js') }}"></script>
+	{% endif %}
+
 {% endblock %}

@@ -31,18 +31,16 @@
                         </select>
                     </span>10.00
                 </span>
-                <!-- <a href="{{ url_for('checkout', integration=method, country="FR", currency="USD") }}">
-                    <p class="button">Continue to checkout</p>
-                </a> -->
+               
 
-                <form action="{{ url_for('checkout', integration=method)}}" id="checkoutForm">
+                <form action="{{ url_for('checkout', integrationType=integrationType, integration=method)}}" id="checkoutForm">
                     <input type="submit" value="Continue to checkout" class="button">
-                  </form>
+                </form>
 
                 <div class="cart">
                     <span>
-                        <label for="country">Choose Country</label>
-                        <select id='country' form='checkoutForm' name="country">
+                        <!-- <label for="country">Choose Country</label> -->
+                        <select id='country' form='checkoutForm' name="country" class="integration-list-item">
                             <option value="AF">Afghanistan</option>
                             <option value="AX">Åland Islands</option>
                             <option value="AL">Albania</option>
