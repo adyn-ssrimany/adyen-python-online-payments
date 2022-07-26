@@ -14,13 +14,20 @@
                     href="https://docs.adyen.com/checkout">Online payments.</a></p>
         </div>
         
-        <h4><label for="intType">Integration Type:</label></h4>
-        <span>    
-            <select name="intType" id="intType" class="integration-list-item" form='selectionForm'>
-                <option value="sessions" selected="selected">Sessions 5+</option>
-                <option value="nonsession">Pre Sessions &lt;5 </option>
-            </select>
-        </span>
+        <h4>Ecom Integrations</h4>
+        
+        <h4>
+            <div>
+                <select name="intType" id="intType" class="integration-list-item" form='selectionForm'>
+                    <option value="sessions" selected="selected">Sessions 5+</option>
+                    <option value="nonsession">Pre Sessions &lt;5 </option>
+                </select>
+            </div>
+        </h4>
+                
+            
+        
+   
         
             
         
@@ -102,5 +109,25 @@
                 
             </ul>
         </form>
+
+        <div class="info">
+            <h4>IPP Integrations</h4>
+        </div>
+
+        <ul class="integration-list">
+
+            <li class="integration-list-item">
+                <button type="submit" class="integration-list-item-link" formaction="#"><div class="title-container">
+                    <p class="integration-list-item-title">Cloud Integration WIP</p>
+                </div></button>
+            </li>
+
+            <li class="integration-list-item">
+                <button type="submit" class="integration-list-item-link" formaction="#"><div class="title-container">
+                    <p class="integration-list-item-title">Local Integration WIP</p>
+                </div></button>
+            </li>
+        </ul>
+
     </div>
 {% endblock %}

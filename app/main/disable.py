@@ -24,7 +24,7 @@ def adyen_disableStoredPayment(data):
     request = {}
 
     request['recurringDetailReference'] = data
-    request['shopperReference'] = f"Reference da356326-7f57-4341-b81c-a8546e8916f4"
+    request['shopperReference'] = f"Reference da356326-7f57-4341-b81c-a8546e8916y7"
     
     
     print("/disable request:\n" + json.dumps(request))

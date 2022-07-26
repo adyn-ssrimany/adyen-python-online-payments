@@ -26,6 +26,7 @@ def adyen_payment_methods(host_url,data):
 
     request['amount'] = {"value": "1000", "currency": data["currency"]}
     request['countryCode'] = data["country"]
+    request['shopperReference'] = f"Reference da356326-7f57-4341-b81c-a8546e8916y7"
 
     print("/payment methods request:\n" + json.dumps(request))
 

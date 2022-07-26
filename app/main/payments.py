@@ -29,6 +29,14 @@ def adyen_payments(host_url,data):
     request['paymentMethod'] = data['paymentMethod']
     #request['shopperIP'] = "185.38.113.213",
     #request['shopperIP'] = "31.31.159.123",
+    #request['mandate']={ "amount":"1000", "frequency":"monthly", "endsAt":"2022-12-22"}
+
+    
+    request['storePaymentMethod'] = data['storePaymentMethod']
+
+    if json.dumps(data['storePaymentMethod']) == 'true':
+        request['recurringProcessingModel'] = "subscription"
+    
     
 
     if 'browserInfo' in data:
@@ -45,6 +53,7 @@ def adyen_payments(host_url,data):
     lineItems = [ { "quantity": "1", "description": "SunGlasses","id": "Item #1","amountIncludingTax": "500",},{"quantity": "1","description": "Shoes","id": "Item #2","amountIncludingTax": "500"}]
     request['lineItems']=lineItems
     request['shopperEmail'] = "ssrimany@yopmail.com"
+    request['shopperReference'] = f"Reference da356326-7f57-4341-b81c-a8546e8916y7"
     request['shopperLocale'] = "en_NL"
     request['channel'] = "Web"
     request['shopperName'] = {"firstName": "John","gender":"UNKNOWN","lastName": "Smith"}

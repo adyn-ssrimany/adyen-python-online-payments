@@ -24,7 +24,24 @@ async function startCheckout() {
 		const checkout = await createAdyenCheckout(checkoutPaymentMethodResponse)
 
 		// Create an instance of Drop-in and mount it to the container you created.
-		const dropinComponent = checkout.create(type).mount("#component");  // pass DIV id where component must be rendered
+		const dropinComponent = checkout.create(type,{
+            //onReady: () => {}, // Drop-in configuration only has props related to itself, like the onReady event. Drop-in configuration cannot contain generic configuration like the onError event.
+            showRemovePaymentMethodButton:true,
+            showStoredPaymentMethods:true,
+            async onDisableStoredPaymentMethod(storedPaymentMethodId, resolve, reject)
+            {
+                try{
+                        const removeResponse=await callServer("/api/remove",storedPaymentMethodId);
+                        console.log(removeResponse);
+                        resolve(alert("Payment method successfully removed!!"));
+                }
+                catch(error)
+                {
+                    console.error(error);
+                    reject(alert("Error occurred. Look at console for details"));
+                }
+            }
+        }).mount("#component");  // pass DIV id where component must be rendered
 
 	} catch (error) {
 		console.error(error);
@@ -102,6 +119,7 @@ async function createAdyenCheckout(paymentMethodsResponse) {
                 showImage: true
             },
             card: {
+                enableStoreDetails:true,
                 hasHolderName: true,
                 holderNameRequired: true,
                 name: "Credit or debit card",

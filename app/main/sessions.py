@@ -27,7 +27,7 @@ def adyen_sessions(host_url,data):
     request['amount'] = {"value": "1000", "currency": data["currency"]}
     request['reference'] = f"Reference {uuid.uuid4()}"  # provide your unique payment reference
     #request['shopperReference'] = f"Reference {uuid.uuid4()}"
-    request['shopperReference'] = f"Reference da356326-7f57-4341-b81c-a8546e8916f4"
+    request['shopperReference'] = f"Reference da356326-7f57-4341-b81c-a8546e8916y7"
      
     # set redirect URL required for some payment methods
     request['returnUrl'] = f"{host_url}redirect?shopperOrder=myRef"
