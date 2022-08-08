@@ -32,7 +32,7 @@ def create_app():
     @app.route('/checkout/<integrationType>/<integration>')
     def checkout(integrationType,integration):
         if integration in get_supported_integration():
-            return render_template('component.html', method=integration, client_key=get_adyen_client_key(), country=request.args.get('country'), currency=request.args.get('currency'), integrationType=integrationType)
+            return render_template('component.html', method=integration, client_key=get_adyen_client_key(), country=request.args.get('country'), currency=request.args.get('currency'), integrationType=integrationType, storePaymentMethod=request.args.get('storePaymentMethod'),recurringProcessingModel=request.args.get('recurringProcessingModel'))
         else:
             abort(404)
 
@@ -92,7 +92,7 @@ def create_app():
     @app.route('/redirect', methods=['POST', 'GET'])
     def redirect():
 
-        return render_template('component.html', method=None, client_key=get_adyen_client_key(),currency=None,country=None)
+        return render_template('component.html', method=None, client_key=get_adyen_client_key(),currency=None,country=None,storePaymentMethod=None,recurringProcessingModel=None)
 
     # Process incoming webhook notifications
     @app.route('/api/webhooks/notifications', methods=['POST'])

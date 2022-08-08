@@ -7,6 +7,8 @@ const sessionId = urlParams.get('sessionId'); // Unique identifier for the payme
 const redirectResult = urlParams.get('redirectResult');
 const country = JSON.parse(document.getElementById('country').innerHTML);
 const currency = JSON.parse(document.getElementById('currency').innerHTML);
+const nonCardStorePayment = JSON.parse(document.getElementById('storePaymentMethod').innerHTML);
+const recurringProcessingModel = JSON.parse(document.getElementById('recurringProcessingModel').innerHTML);
 
 
 // Start the Checkout workflow
@@ -84,6 +86,8 @@ async function createAdyenCheckout(paymentMethodsResponse) {
             //Add user currency and country selection
             state.data.currency=currency;
             state.data.country=country;
+            state.data.nonCardStorePayment=nonCardStorePayment;
+            state.data.recurringProcessingModel=recurringProcessingModel;
             callServer("/api/payments",state.data)
               .then(response => {
                 if (response.action) {

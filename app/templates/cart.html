@@ -292,6 +292,24 @@
                           </select>
                     </span>
                 </div>
+
+                <div class="cart">
+                    Store Payment details for non Card based Payments
+                        <input type="radio" id="recurring_yes" name="storePaymentMethod" value="true" form='checkoutForm'>
+                        <label for="recurring_yes">Yes</label>
+                        <input type="radio" id="recurring_no" name="storePaymentMethod" value="false" checked form='checkoutForm'>
+                        <label for="recurring_no">No</label><br>
+                </div>
+
+                <div class="cart">
+                    Recurring Process Model: 
+                    <select id='recurringProcessingModel' form='checkoutForm' name="recurringProcessingModel">
+                        <option value="CardOnFile" selected="selected">CardOnFile</option>
+                        <option value="Subscription">Subscription</option>
+                        <option value="UnscheduledCardOnFile">UnscheduledCardOnFile</option>
+                    </select>
+                </div>
+
             </div>
         </section>
     </main>

@@ -32,6 +32,9 @@
 	<script id="integration-type" type="application/json">{{ method|tojson }}</script>
 	<script id="country" type="application/json">{{ country|tojson }}</script>
 	<script id="currency" type="application/json">{{ currency|tojson }}</script>
+	<script id="storePaymentMethod" type="application/json">{{ storePaymentMethod|tojson }}</script>
+	<script id="recurringProcessingModel" type="application/json">{{ recurringProcessingModel|tojson }}</script>
+
 
 	{% if integrationType == "sessions" %}
 		<script src="{{ url_for('static', filename='js/adyen-implementation.js') }}"></script>

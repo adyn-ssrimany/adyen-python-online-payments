@@ -4,6 +4,9 @@ const type = JSON.parse(document.getElementById('integration-type').innerHTML);
 const country = JSON.parse(document.getElementById('country').innerHTML);
 const currency = JSON.parse(document.getElementById('currency').innerHTML);
 
+const nonCardStorePayment = JSON.parse(document.getElementById('storePaymentMethod').innerHTML);
+const recurringProcessingModel = JSON.parse(document.getElementById('recurringProcessingModel').innerHTML);
+
 
 // Used to finalize a checkout call in case of redirect
 const urlParams = new URLSearchParams(window.location.search);
@@ -15,7 +18,7 @@ const redirectResult = urlParams.get('redirectResult');
 async function startCheckout() {
 	try {
 	    // Init Sessions
-        const data = {"country":country,"currency":currency}
+        const data = {"country":country,"currency":currency,"nonCardStorePayment":nonCardStorePayment,"recurringProcessingModel":recurringProcessingModel}
 		const checkoutSessionResponse = await callServer("/api/sessions?type=" + type,data);
 
         // Create AdyenCheckout using Sessions response

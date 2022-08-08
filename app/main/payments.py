@@ -31,11 +31,19 @@ def adyen_payments(host_url,data):
     #request['shopperIP'] = "31.31.159.123",
     #request['mandate']={ "amount":"1000", "frequency":"monthly", "endsAt":"2022-12-22"}
 
-    
-    request['storePaymentMethod'] = data['storePaymentMethod']
 
-    if json.dumps(data['storePaymentMethod']) == 'true':
-        request['recurringProcessingModel'] = "subscription"
+    if 'storePaymentMethod' in data:
+        request['storePaymentMethod'] = data['storePaymentMethod']
+        if json.dumps(data['storePaymentMethod']) == 'true':
+            request['recurringProcessingModel'] = data['recurringProcessingModel']
+
+    
+
+    if 'nonCardStorePayment' in data:
+        request['storePaymentMethod'] = data['nonCardStorePayment']
+        if (data ['nonCardStorePayment']) == 'true':
+            request['recurringProcessingModel'] = data['recurringProcessingModel']
+
     
     
 
