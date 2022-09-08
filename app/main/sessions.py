@@ -43,7 +43,7 @@ def adyen_sessions(host_url,data):
     request['shopperEmail'] = "ssrimany@yopmail.com"
     request['shopperLocale'] = "en_NL"
     request['shopperName'] = {"firstName": "John","gender":"UNKNOWN","lastName": "Smith"}
-    request['billingAddress'] = {"city": "Amsterdam", "country": "NL","houseNumberOrName": "25","postalCode": "123456","street": "Simpson Road"}
+    request['billingAddress'] = {"city": "London", "country": "GB","houseNumberOrName": "12-13 Wells Street","postalCode": "W1T 3PA"}
     request['deliveryAddress'] = {"city": "Amsterdam", "country": "NL","houseNumberOrName": "25","postalCode": "123456","street": "Simpson Road"}
     
 

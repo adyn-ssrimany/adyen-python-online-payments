@@ -123,6 +123,10 @@ async function createAdyenCheckout(paymentMethodsResponse) {
                 showImage: true
             },
             card: {
+                useClickToPay: true,
+                clickToPayConfiguration: {
+                    shopperIdentityValue: 'ssrimany@yopmail.com'
+                },
                 enableStoreDetails:true,
                 hasHolderName: true,
                 holderNameRequired: true,

@@ -77,6 +77,7 @@ async function createAdyenCheckout(session) {
                 showImage: true
             },
             card: {
+                useClickToPay: true,
                 enableStoreDetails:true,
                 positionHolderNameOnTop:true,
                 hasHolderName: true,
