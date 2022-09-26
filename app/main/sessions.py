@@ -29,7 +29,7 @@ def adyen_sessions(host_url,data):
     request['reference'] = f"Reference {uuid.uuid4()}"  # provide your unique payment reference
     #request['shopperReference'] = f"Reference {uuid.uuid4()}"
     request['shopperReference'] = f"Reference da356326-7f57-4341-b81c-a8546e8916y7"
-
+    request['shopperInteraction'] = "Ecommerce"
     if 'nonCardStorePayment' in data:
         request['storePaymentMethod'] = data['nonCardStorePayment']
         if (data ['nonCardStorePayment']) == 'true':
