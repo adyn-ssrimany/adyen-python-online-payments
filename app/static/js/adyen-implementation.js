@@ -78,6 +78,9 @@ async function createAdyenCheckout(session) {
             },
             card: {
                 useClickToPay: true,
+                clickToPayConfiguration: {
+                    merchantDisplayName: 'Cocoreo'
+                },
                 enableStoreDetails:true,
                 positionHolderNameOnTop:true,
                 hasHolderName: true,
@@ -152,4 +155,3 @@ else {
     // existing session: complete Checkout
     finalizeCheckout();
 }
-
