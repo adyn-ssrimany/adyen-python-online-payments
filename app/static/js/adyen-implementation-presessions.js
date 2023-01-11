@@ -134,7 +134,18 @@ async function createAdyenCheckout(paymentMethodsResponse) {
                 amount: {
                     value: 1000,
                     currency: currency
-                }
+                },
+                installmentOptions: {
+                    card: {
+                            // Shows 1, 2, 3 and 6 as the numbers of monthly installments that the shopper can choose.
+                            values: [1, 2, 3, 6],
+                            // Shows regular and revolving as plans that the shopper can choose.
+                            // plans: [ 'regular' ]
+                            plans: [ 'regular']
+                        },
+                    // Shows payment amount per installment.
+                    showInstallmentAmounts: true
+                },
             },
             paypal: {
                 amount: {
@@ -143,6 +154,17 @@ async function createAdyenCheckout(paymentMethodsResponse) {
                 },
                 environment: "test",
                 countryCode: country   // Only needed for test. This will be automatically retrieved when you are in production.
+            },
+            googlepay:{
+                buttonColor:"black",
+                allowedPaymentMethods:[
+                    {
+                        type: "CARD",
+                        parameters: {
+                          allowedAuthMethods: ["CRYPTOGRAM_3DS"]
+                        }
+                    }
+                ]
             }
         }
     };
